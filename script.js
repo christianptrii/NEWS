@@ -41,4 +41,27 @@ function renderMain(arr) {
     // Inisialisasi string HTML untuk konten utama
      let mainHTML = '';
 
+    // Loop melalui array artikel
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i].urlToImage) {
+            // Membuat HTML untuk setiap kartu artikel
+            mainHTML += ` <div class="card">
+                            <a href="${arr[i].url}">
+                            <img src="${arr[i].urlToImage}" loading="lazy" />
+                            <h4>${arr[i].title}</h4>
+                            <div class="publishbyDate">
+                                <p>${arr[i].source.name}</p>
+                                <span>•</span>
+                                <p>${new Date(arr[i].publishedAt).toLocaleDateString()}</p>
+                            </div>
+                            <div class="desc">
+                               ${arr[i].description}
+                            </div>
+                            </a>
+                         </div>`;
+        }
+    }
+
+    // Memperbarui innerHTML elemen utama dengan HTML yang dibuat
+    document.querySelector("main").innerHTML = mainHTML;
 }
