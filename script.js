@@ -30,3 +30,15 @@ fetchData("all").then(data => {
         console.error('No data received or data format is incorrect');
     }
 });
+
+// Fungsi untuk merender konten utama dengan artikel yang diambil
+function renderMain(arr) {
+    if (!arr) {
+        console.error('Array is undefined or null');
+        return;
+    }
+
+    // Inisialisasi string HTML untuk konten utama
+     let mainHTML = '';
+
+}
