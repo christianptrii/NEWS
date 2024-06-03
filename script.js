@@ -65,3 +65,43 @@ function renderMain(arr) {
     // Memperbarui innerHTML elemen utama dengan HTML yang dibuat
     document.querySelector("main").innerHTML = mainHTML;
 }
+
+// Mengatur klik tombol menu untuk perangkat mobile
+let mobilemenu = document.querySelector(".mobile");
+let menuBtn = document.querySelector(".menuBtn");
+let menuBtnDisplay = true;
+
+menuBtn.addEventListener("click", () => {
+    mobilemenu.classList.toggle("hidden");
+});
+
+// Mengatur pengiriman form pencarian untuk desktop
+const searchBtn = document.getElementById("searchForm");
+const searchBtnMobile = document.getElementById("searchFormMobile");
+const searchInputMobile = document.getElementById("searchInputMobile");
+const searchInput = document.getElementById("searchInput");
+
+searchBtn.addEventListener("submit", async (e) => {
+    e.preventDefault();  // Mencegah perilaku default pengiriman form
+    console.log(searchInput.value);  // Mencetak nilai input pencarian untuk debugging
+
+    // Mengambil dan merender data berdasarkan nilai input pencarian
+    const data = await fetchData(searchInput.value);
+    renderMain(data.articles);
+});
+
+// Mengatur pengiriman form pencarian untuk perangkat mobile
+searchBtnMobile.addEventListener("submit", async (e) => {
+    e.preventDefault();  // Mencegah perilaku default pengiriman form
+
+    // Mengambil dan merender data berdasarkan nilai input pencarian di perangkat mobile
+    const data = await fetchData(searchInputMobile.value);
+    renderMain(data.articles);
+    console.log(searchInputMobile.value);  // Mencetak nilai input pencarian untuk debugging
+});
+
+// Fungsi untuk mengambil dan merender data berdasarkan query pencarian
+async function Search(query) {
+    const data = await fetchData(query);
+    renderMain(data.articles);
+}
