@@ -8,6 +8,9 @@
 </head>
 <body>
 
+    <main><main>
+
+    
     <script src="script.js"></script>
 
 </body>

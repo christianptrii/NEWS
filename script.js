@@ -21,3 +21,12 @@ async function fetchData(query) {
     }
 }
 
+// Mengambil data dengan query "all" saat halaman dimuat
+fetchData("all").then(data => {
+    if (data && data.articles) {
+
+        renderMain(data.articles);
+    } else {
+        console.error('No data received or data format is incorrect');
+    }
+});
