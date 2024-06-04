@@ -40,6 +40,14 @@ if ($result->num_rows > 0) {
 </head>
 <body>
 
+<?php
+if (isset($_GET['msg'])) {
+    if ($_GET['msg'] == "n") {
+        echo "<script>alert('Akun tidak ditemukan');</script>";
+    }
+}
+?>
+
 <div class="container">
     <div class="card">
         <h2>Login</h2>
