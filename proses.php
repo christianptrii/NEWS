@@ -21,4 +21,20 @@ if ($conn->connect_error) {
     exit();
 }
 
+// Mulai transaksi
+$conn->begin_transaction();
+
+try {
+    // Hapus kategori lama dari user
+    $sql = "DELETE FROM tb_tampil_category WHERE id_user = ?";
+    $stmt = $conn->prepare($sql);
+    if (!$stmt) {
+        throw new Exception("Prepare statement failed: " . $conn->error);
+    }
+    $stmt->bind_param("i", $user_id);
+    if (!$stmt->execute()) {
+        throw new Exception("Execute failed: " . $stmt->error);
+    }
+}
+
 ?>
