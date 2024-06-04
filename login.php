@@ -2,6 +2,15 @@
 session_start(); // Mulai sesi
 
 include('config.php'); // Pastikan file config.php benar
+
+// Gunakan prepared statement untuk keamanan
+$sql = "SELECT * FROM user WHERE username = ? AND password = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("ss", $username, $password);
+$stmt->execute();
+$result = $stmt->get_result();
+
+
 ?>
 
 <!DOCTYPE html>
