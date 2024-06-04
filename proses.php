@@ -76,6 +76,21 @@ try {
     $stmt->close();
     $conn->close();
 
-}
+    // Redirect ke index.php setelah sukses menyimpan data
+    header("Location: index.php?message=Data saved successfully");
+    exit();
+    
+    } catch (Exception $e) {
+        // Rollback transaksi jika terjadi error
+        $conn->rollback();
+    
+        // Tutup statement dan koneksi
+        if ($stmt) $stmt->close();
+        $conn->close();
+    
+        // Redirect kembali ke halaman sebelumnya dengan pesan error
+        header("Location: after-login.php?message=Error saving user data: " . urlencode($e->getMessage()));
+        exit();
+    }
 
 ?>
