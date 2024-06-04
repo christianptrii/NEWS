@@ -15,6 +15,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $user = $_POST['username'];
     $pass = $_POST['password'];
     $created_at = date('Y-m-d H:i:s');
+
+    // Menyiapkan dan menjalankan query SQL untuk menyimpan data pengguna
+    $stmt = $conn->prepare("INSERT INTO user (username, password, created_at) VALUES (?, ?, ?)");
+    $stmt->bind_param("sss", $user, $pass, $created_at);
+
+    if ($stmt->execute()) {
+        // Redirect ke halaman login jika registrasi berhasil
+        header("Location: login.php");
+        exit(); // Pastikan untuk menghentikan eksekusi skrip setelah redirect
+    } else {
+        echo "Error: " . $stmt->error;
+    }
 }
 ?>
 
