@@ -59,6 +59,17 @@ try {
             $row = $resultCategory->fetch_assoc();
             $id_category = $row['id_category'];
 
+            // Masukkan kategori ke tb_tampil_category
+            $stmt->bind_param("ii", $user_id, $id_category);
+            if (!$stmt->execute()) {
+                throw new Exception("Execute failed: " . $stmt->error);
+            }
+        } else {
+            throw new Exception("Category not found: " . $category);
+        }
+        $stmtCategory->close();
+    }
+
 }
 
 ?>
