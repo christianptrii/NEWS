@@ -243,3 +243,10 @@ main{
     padding: 5px 15px;
 }
 }
+
+.footer__bar {
+    padding: 1rem;
+    font-size: 0.9rem;
+    color: var(--text-light);
+    text-align: center;
+  }

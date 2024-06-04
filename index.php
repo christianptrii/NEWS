@@ -43,6 +43,11 @@
                 <li onclick="Search('food')">Food</li>
                 <li onclick="Search('movies')">Movies</li>
                 <li onclick="Search('business')">Business</li>
+                <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
+                    <li><a href="logout.php">Logout</a></li>
+                <?php else: ?>
+                    <li><a href="login.php">Login</a></li>
+                <?php endif; ?>
             </ul>
         </nav>
 
@@ -58,6 +63,11 @@
                     <li onclick="Search('food')">Food</li>
                     <li onclick="Search('movies')">Movies</li>
                     <li onclick="Search('business')">Business</li>
+                    <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
+                    <li><a href="logout.php">Logout</a></li>
+                <?php else: ?>
+                    <li><a href="login.php">Login</a></li>
+                <?php endif; ?>
                 </ul>
             </nav>
             <div class="inputSearch">
