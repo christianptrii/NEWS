@@ -66,6 +66,30 @@ function renderMain(arr) {
     document.querySelector("main").innerHTML = mainHTML;
 }
 
+// Fungsi untuk mengambil dan menampilkan kategori yang dipilih oleh pengguna
+async function fetchUserCategoriesData() {
+    if (userCategories) {
+        console.log('user categories', userCategories);
+
+        // Mengambil data untuk kategori yang dipilih
+        const data = await fetchData(userCategories);
+        console.log("data", data);
+
+        // Merender data yang diambil jika mengandung artikel
+        if (data && data.articles) {
+            renderMain(data.articles);
+        } else {
+            console.error('No data received or data format is incorrect');
+        }
+    } else {
+        // Mencetak kesalahan jika tidak ada kategori yang dipilih oleh pengguna
+        console.error('No categories selected by user');
+    }
+}
+
+// Mengambil data kategori pengguna saat halaman dimuat
+fetchUserCategoriesData();
+
 // Mengatur klik tombol menu untuk perangkat mobile
 let mobilemenu = document.querySelector(".mobile");
 let menuBtn = document.querySelector(".menuBtn");

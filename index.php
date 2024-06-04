@@ -1,3 +1,33 @@
+<?php
+session_start();
+include('config.php');
+
+// Cek apakah pengguna sudah login
+
+
+$user_id = @$_SESSION['user_id'];
+
+// Ambil kategori yang dipilih oleh pengguna dari database
+$sql = "SELECT tb_category.category FROM tb_tampil_category 
+        JOIN tb_category ON tb_tampil_category.id_category = tb_category.id_category 
+        WHERE tb_tampil_category.id_user = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$result = $stmt->get_result();
+$categories = [];
+
+while ($row = $result->fetch_assoc()) {
+    $categories[] = $row['category'];
+}
+
+$stmt->close();
+$conn->close();
+
+// Ubah array kategori menjadi string yang bisa digunakan dalam JavaScript, dipisahkan oleh spasi
+$categories_string = implode(' ', $categories);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -97,6 +127,11 @@
       </div>
     </footer>
 
+    <script>
+        // Dapatkan kategori yang dipilih dari PHP
+        const userCategories = "<?php echo $categories_string; ?>";
+        console.log('User Categories:', userCategories);  // Debugging log
+    </script>
 
     <script src="script.js"></script>
 
