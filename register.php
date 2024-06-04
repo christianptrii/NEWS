@@ -51,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <input type="text" id="username" name="username" required><br><br>
                     <label for="password">Password:</label>
                     <input type="password" id="password" name="password" required><br><br>
-                    <button type="submit" name="register">Login</button>
+                    <button type="submit" name="register">Register</button>
                     <p>Sudah Punya Akun? <a href="login.php">Silahkan login</a></p>
                 </form>
         </div>
