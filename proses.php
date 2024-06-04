@@ -35,6 +35,14 @@ try {
     if (!$stmt->execute()) {
         throw new Exception("Execute failed: " . $stmt->error);
     }
+
+    // Masukkan kategori baru
+    $sql = "INSERT INTO tb_tampil_category (id_user, id_category) VALUES (?, ?)";
+    $stmt = $conn->prepare($sql);
+    if (!$stmt) {
+            throw new Exception("Prepare statement failed: " . $conn->error);
+    }
+    
 }
 
 ?>
