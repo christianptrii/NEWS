@@ -70,6 +70,12 @@ try {
         $stmtCategory->close();
     }
 
+    // Komit transaksi
+    $conn->commit();
+
+    $stmt->close();
+    $conn->close();
+
 }
 
 ?>
