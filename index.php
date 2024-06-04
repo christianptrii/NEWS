@@ -28,7 +28,7 @@
 <body>
 
 <header>
-        <img src="./logo.png" width="120px" />
+        <img src="logo.png" width="120px" />
 
         <div class="inputSearch desktop">
             <form id="searchForm">
