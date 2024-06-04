@@ -9,6 +9,13 @@ include('config.php');
 if ($conn->connect_error) {
     die("Koneksi gagal: " . $conn->connect_error);
 }
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Mengambil data dari form
+    $user = $_POST['username'];
+    $pass = $_POST['password'];
+    $created_at = date('Y-m-d H:i:s');
+}
 ?>
 
 <!DOCTYPE html>
