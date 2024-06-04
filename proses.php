@@ -42,7 +42,23 @@ try {
     if (!$stmt) {
             throw new Exception("Prepare statement failed: " . $conn->error);
     }
-    
+
+    foreach ($categories as $category) {
+        // Ambil id_category dari nama kategori
+        $sqlCategory = "SELECT id_category FROM tb_category WHERE category = ?";
+        $stmtCategory = $conn->prepare($sqlCategory);
+        if (!$stmtCategory) {
+            throw new Exception("Prepare statement failed: " . $conn->error);
+        }
+        $stmtCategory->bind_param("s", $category);
+        if (!$stmtCategory->execute()) {
+            throw new Exception("Execute failed: " . $stmtCategory->error);
+        }
+        $resultCategory = $stmtCategory->get_result();
+        if ($resultCategory->num_rows > 0) {
+            $row = $resultCategory->fetch_assoc();
+            $id_category = $row['id_category'];
+
 }
 
 ?>
