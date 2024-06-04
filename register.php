@@ -1,3 +1,16 @@
+<?php
+// Memulai sesi
+session_start();
+
+// Menyertakan file konfigurasi database
+include('config.php');
+
+// Mengecek koneksi
+if ($conn->connect_error) {
+    die("Koneksi gagal: " . $conn->connect_error);
+}
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
