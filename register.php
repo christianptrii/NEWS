@@ -27,6 +27,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         echo "Error: " . $stmt->error;
     }
+
+        // Menutup statement dan koneksi
+        $stmt->close();
+        $conn->close();
 }
 ?>
 
