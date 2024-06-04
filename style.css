@@ -82,3 +82,91 @@ nav ul li:hover{
 .header__container button:hover {
     background-color: #646464;
 }
+
+.inputSearch,
+form{
+    display: flex;
+    align-items: center;
+    height: 40px;
+    width: 400px;
+    border-radius: 50px;
+    overflow: hidden;
+    border: 1.5px solid #333333;
+}
+.inputSearch  input{
+    width: 100%;
+    height: 100%;
+    padding: 0px 15px;
+    border:none;
+    outline: none;
+    font-size: 16px;
+}
+.inputSearch span{
+    width: 70px;
+    background-color: #333333;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    color:white;
+}
+.menuBtn{
+    font-size: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.menuBtn:hover{
+    background-color: #333333;
+    color:#ffffff;
+}
+
+.desktop{
+    display: none;
+}
+
+@media all and (min-width:700px) {
+    header{
+        padding: 5px 30px;
+    }
+    .desktop{
+        display: flex;
+    }
+    .menuBtn{
+        display: none;
+    }
+}
+
+
+
+/* mobile menu */
+.mobile{
+    position: fixed;
+    top: 70px;
+    width: 100%;
+    max-width: 700px;
+    background-color:#f5f6f9 ;
+    height: 100vh;
+    padding: 20px;
+    box-shadow: none;
+    z-index: 2;
+    margin-left: -10px;
+}
+.mobile nav,
+.mobile nav ul{
+    flex-direction: column;
+}
+
+.mobile .inputSearch,
+.mobile form{
+    height: 35px;
+}
+
+.hidden{
+    display: none;
+}
