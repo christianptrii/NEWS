@@ -1,3 +1,9 @@
+<?php 
+session_start(); // Mulai sesi
+
+include('config.php'); // Pastikan file config.php benar
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,6 +24,8 @@
             <label for="password">Password</label>
             <input type="password" id="password" placeholder="Password" name="password" required><br><br>
             <button type="submit" name="login">Login</button>
+            <p>Belum memiliki akun? <a href="register.php">Sign Up</a></p>
+            <p>Kembali ke beranda? <a href="index.php">Go Back</a></p>
         </form>
     </div>
 </div>
